@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace RomanNumeralParser
 {
@@ -18,22 +19,34 @@ namespace RomanNumeralParser
                 Numerals.Add('M', 1000);
             }
 
-            var romanString = "MMXX";
-            var numeralToInt = 0;
+            Regex regex = new Regex("^[MDCLXVI]+$");
 
-            for (int i = 0; i < romanString.Length; i++)
+            Console.WriteLine("Please enter a string of Roman Numerals");
+            var romanString = Console.ReadLine().ToUpper();
+            ^[MDCLXVI] +$
+            Match match = regex.Match(romanString);
+
+            if (match.Success)
             {
-                if (i + 1 < romanString.Length && Numerals[romanString[i]] < Numerals[romanString[i + 1]])
-                {
-                    numeralToInt -= Numerals[romanString[i]];
-                }
-                else
-                {
-                    numeralToInt += Numerals[romanString[i]];
-                }
-            }
+                var numeralToInt = 0;
 
-            Console.WriteLine(numeralToInt);
+                for (int i = 0; i < romanString.Length; i++)
+                {
+                    if (i + 1 < romanString.Length && Numerals[romanString[i]] < Numerals[romanString[i + 1]])
+                    {
+                        numeralToInt -= Numerals[romanString[i]];
+                    }
+                    else
+                    {
+                        numeralToInt += Numerals[romanString[i]];
+                    }
+                }
+                Console.WriteLine(romanString + " is " + numeralToInt);
+            }
+            else
+            {
+                Console.WriteLine("Please enter a valid Roman Numeral string");
+            }
         }
     }
 }
