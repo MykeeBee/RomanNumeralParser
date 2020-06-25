@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-//upload?
-
 namespace RomanNumeralParser
 {
     class Program
