@@ -23,7 +23,7 @@ namespace RomanNumeralParser
 
             Console.WriteLine("Please enter a string of Roman Numerals");
             var romanString = Console.ReadLine().ToUpper();
-            ^[MDCLXVI] +$
+
             Match match = regex.Match(romanString);
 
             if (match.Success)
